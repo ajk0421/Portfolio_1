@@ -17,6 +17,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'slim-rails'
 gem 'html2slim'
+gem 'devise'
 
 
 group :development, :test do

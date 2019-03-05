@@ -1,0 +1,35 @@
+h1 アーティスト登録
+
+.nav.justify-content-end
+  = link_to 'アーティスト一覧へ', artists_path, class: 'nav-link'
+
+= form_with model: @artist,local: true do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control', id: 'artist_name'
+
+  .form-group
+    = f.label :furi_gana
+    = f.text_field :furi_gana, class: 'form-control', id: 'artist_furi_gana'
+
+  .form-group
+    = f.label :price
+    = f.text_field :price, class: 'form-control', id: 'artist_place'
+
+  .form-group
+    = f.label :profile
+    = f.text_area :profile, class: 'form-control', id: 'artist_profile'
+
+  .form-group
+    = f.label :hp
+    = f.text_field :hp, class: 'form-control', id: 'artist_hp'
+
+  .form-group
+    = f.label :twitter
+    = f.text_field :twitter, class: 'form-control', id: 'artist_twitter'
+
+  .form-group
+    = f.label :youtube
+    = f.text_field :youtube, class: 'form-control', id: 'artist_youtube'
+
+  = f.submit nil, class: 'btn btn-primary'
