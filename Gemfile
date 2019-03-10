@@ -17,6 +17,9 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'slim-rails'
 gem 'html2slim'
+gem 'devise'
+gem 'carrierwave'
+gem 'rmagick'
 
 
 group :development, :test do
