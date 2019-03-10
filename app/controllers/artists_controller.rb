@@ -1,6 +1,8 @@
 class ArtistsController < ApplicationController
+  before_action :login_required, except: :index
 
   def index
+    @artists = Artist.all
   end
 
   def new
@@ -8,9 +10,13 @@ class ArtistsController < ApplicationController
   end
 
   def create
-    artist = Artist.new(artist_params)
-    artist.save!
-    redirect_to root_path, notice: "登録完了"
+    @artist = Artist.new(artist_params)
+
+    if @artist.save
+      redirect_to root_path, notice: "登録完了"
+    else
+      render :new
+    end
   end
 
   def edit

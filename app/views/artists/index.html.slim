@@ -1,0 +1,5 @@
+h1 アーティスト一覧
+
+- @artists.each do |artist|
+  = image_tag artist.image_url(:thumb)
+  p = artist.name
