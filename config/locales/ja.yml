@@ -14,7 +14,7 @@ ja:
         name: アーティストの名前
         furi_gana: フリガナ
         image: アーティスト写真
-        price: 活動地域
+        place: 活動地域
         profile: プロフィール
         hp: 公式HP
         twitter: Twitterアカウント

@@ -10,7 +10,7 @@ class ArtistsController < ApplicationController
   end
 
   def create
-    @artist = Artist.new(artist_params)
+    @artist = current_user.artists.new(artist_params)
 
     if @artist.save
       redirect_to root_path, notice: "登録完了"
@@ -19,13 +19,28 @@ class ArtistsController < ApplicationController
     end
   end
 
+  def show
+    @artist = Artist.find(params[:id])
+  end
+
   def edit
+    @artist = Artist.find(params[:id])
   end
 
   def update
+    @artist =  Artist.find(params[:id])
+
+    if @artist.update(artist_params)
+      redirect_to root_path, notice: "更新完了"
+    else
+      render :edit
+    end
   end
 
   def destroy
+    artist = Artist.find(params[:id])
+    artist.destroy
+    redirect_to user_path(current_user.id), notice: "削除しました"
   end
 
   private

@@ -18,6 +18,8 @@ html
       = link_to "ログイン", new_user_session_path, class: "post"
 
     .container
-      - if flash.notice.present?
-        .alert.alert-success= flash.notice
+      - flash.each do |key,value|
+        - key = "info" if key == "notice"
+        - key = "danger" if key == "alert"
+        = content_tag :div, value, class: "alert alert-#{key}"  
     = yield
