@@ -3,3 +3,7 @@ h2 = current_user.id
 h2 = current_user.name
 
 = link_to 'アーティスト登録', new_artist_path
+
+h2 登録アーティスト
+- @artists.each do |artist|
+  p = link_to artist.name, artist_path(artist.id)

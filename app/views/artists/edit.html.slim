@@ -1,4 +1,4 @@
-h1 アーティスト登録
+h1 アーティスト編集
 
 .nav.justify-content-end
   = link_to 'マイページへ', user_path(current_user.id), class: 'nav-link'
@@ -6,7 +6,7 @@ h1 アーティスト登録
 - @artist.errors.full_messages.each do |er|
   p = er
 
-= form_with model: @artist,local: true, url: confirm_new_artist_path do |f|
+= form_with model: @artist,local: true do |f|
   .form-group
     = f.label :name
     = f.text_field :name, class: 'form-control', id: 'artist_name'
@@ -15,11 +15,9 @@ h1 アーティスト登録
     = f.label :furi_gana
     = f.text_field :furi_gana, class: 'form-control', id: 'artist_furi_gana'
 
-
   .form-group
     = f.label :image
-    = f.file_field :image, class: 'form-control', id: 'artist_image'
-    = f.hidden_field :image_cache 
+    = f.file_field :image, id: 'artist_image'
 
   .form-group
     = f.label :place
@@ -41,4 +39,4 @@ h1 アーティスト登録
     = f.label :youtube
     = f.text_field :youtube, class: 'form-control', id: 'artist_youtube'
 
-  = f.submit '確認', class: 'btn btn-primary'
+  = f.submit nil, class: 'btn btn-primary'

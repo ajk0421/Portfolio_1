@@ -3,5 +3,8 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :users, only: :show
-  resources :artists
+
+  resources :artists do
+    post :confirm, action: :confirm_new, on: :new
+  end
 end
