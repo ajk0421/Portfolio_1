@@ -7,6 +7,20 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+      models:
+        artist:
+          attributes:
+            name:
+              blank: を入力して下さい。
+            furi_gana:
+              blank: を入力して下さい。
+            image:
+              blank: を入力して下さい
+            place:
+              blank: を入力して下さい。
+            profile:
+              blank: を入力して下さい。
+
     models:
       artist: アーティスト
     attributes:
@@ -19,6 +33,7 @@ ja:
         hp: 公式HP
         twitter: Twitterアカウント
         youtube: Youtube
+
   date:
     abbr_day_names:
     - 日

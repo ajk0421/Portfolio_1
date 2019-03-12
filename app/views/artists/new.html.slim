@@ -4,7 +4,7 @@ h1 アーティスト登録
   = link_to 'マイページへ', user_path(current_user.id), class: 'nav-link'
 
 - @artist.errors.full_messages.each do |er|
-  h3 = er
+  p = er
 
 = form_with model: @artist,local: true do |f|
   .form-group
@@ -17,7 +17,7 @@ h1 アーティスト登録
 
   .form-group
     = f.label :image
-    = f.file_field :image, id: 'artist_image'
+    = f.file_field :image, class: 'form-control', id: 'artist_image'
 
   .form-group
     = f.label :place

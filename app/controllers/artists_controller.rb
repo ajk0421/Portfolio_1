@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  before_action :login_required, except: :index
+  before_action :login_required, except: [:index, :show]
 
   def index
     @artists = Artist.all
