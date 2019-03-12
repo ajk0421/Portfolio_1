@@ -8,7 +8,7 @@ p = @artist.hp
 p = @artist.twitter
 p = @artist.youtube
 
-- if current_user && current_user.id == @artist.user.id
+- if user_signed_in? && current_user.id == @artist.user.id
   p = link_to "編集する", edit_artist_path(@artist.id)
   p = link_to "削除する", @artist, method: :delete, data:{confirm: "#{@artist.name}を削除してよろしですか？"}
   p = link_to "戻る", user_path(current_user.id)

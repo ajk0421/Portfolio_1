@@ -2,10 +2,12 @@ class Artist < ApplicationRecord
   before_save :set_data
   mount_uploader :image, ImageUploader
 
+  attr_accessor :image_cache
+
   validates :name, presence: true
   validates :furi_gana, presence: true
   validate :katanaka_valid
-  validates :image, presence: true
+  # validates :image, presence: true
   validates :place, presence: true
   validates :profile, presence: true
 

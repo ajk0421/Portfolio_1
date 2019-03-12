@@ -9,8 +9,18 @@ class ArtistsController < ApplicationController
     @artist = Artist.new
   end
 
+  def confirm_new
+    @artist = current_user.artists.new(artist_params)
+    render :new unless @artist.valid?
+  end
+
   def create
     @artist = current_user.artists.new(artist_params)
+
+    if params[:back].present?
+      render :new
+      return
+    end
 
     if @artist.save
       redirect_to root_path, notice: "登録完了"
@@ -46,6 +56,6 @@ class ArtistsController < ApplicationController
   private
 
   def artist_params
-    params.require(:artist).permit(:name, :furi_gana, :image, :place, :profile, :hp, :twitter, :youtube)
+    params.require(:artist).permit(:name, :furi_gana, :image, :image_cache, :place, :profile, :hp, :twitter, :youtube)
   end
 end
