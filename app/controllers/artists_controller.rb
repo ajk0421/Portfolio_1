@@ -16,6 +16,7 @@ class ArtistsController < ApplicationController
 
   def create
     @artist = current_user.artists.new(artist_params)
+    @artist.image.retrieve_from_cache! params[:cache][:image]
 
     if params[:back].present?
       render :new
