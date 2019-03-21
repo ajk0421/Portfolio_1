@@ -7,7 +7,7 @@ class Artist < ApplicationRecord
   validates :name, presence: true
   validates :furi_gana, presence: true
   validate :katanaka_valid
-  # validates :image, presence: true
+  validates :image, presence: true
   validates :place, presence: true
   validates :profile, presence: true
 
