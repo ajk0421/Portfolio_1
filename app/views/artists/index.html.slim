@@ -1,12 +1,23 @@
 h1 アーティスト一覧
 
-- @artists.each do |artist|
-  = link_to artist do
-    = image_tag artist.image_url(:thumb)
-    p = artist.name
+p = link_to 'ア行', controller: 'artists', action: 'gozyu_on', id: 0, name: "ア行"
+p = link_to 'カ行', controller: 'artists', action: 'gozyu_on', id: 1, name: "カ行"
+p = link_to 'サ行', controller: 'artists', action: 'gozyu_on', id: 2, name: "サ行"
+p = link_to 'タ行', controller: 'artists', action: 'gozyu_on', id: 3, name: "タ行"
+p = link_to 'ナ行', controller: 'artists', action: 'gozyu_on', id: 4, name: "ナ行"
+p = link_to 'ハ行', controller: 'artists', action: 'gozyu_on', id: 5, name: "ハ行"
+p = link_to 'マ行', controller: 'artists', action: 'gozyu_on', id: 6, name: "マ行"
+p = link_to 'ヤ行', controller: 'artists', action: 'gozyu_on', id: 7, name: "ヤ行"
+p = link_to 'ラ行', controller: 'artists', action: 'gozyu_on', id: 8, name: "ラ行"
+p = link_to 'ワ行', controller: 'artists', action: 'gozyu_on', id: 9, name: "ワ行"
+p = link_to 'ン行', controller: 'artists', action: 'gozyu_on', id: 10, name: "ン行"
 
-h2 ア行
-- @gozyu_on_artists.each do |artist|
-  = link_to artist do
-    = image_tag artist.image_url(:thumb)
-    p = artist.name
+
+
+
+.container
+  - @artists.each do |artist|
+    .col-md-3
+      = link_to artist do
+          = image_tag artist.image_url(:thumb)
+          p = artist.name
