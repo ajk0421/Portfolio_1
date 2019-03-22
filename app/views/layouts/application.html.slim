@@ -9,17 +9,30 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     meta[name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"]
   body
-    = link_to "TOP", root_path
-    - if user_signed_in?
-      = link_to "マイページ", user_path(current_user.id)
-      = link_to "ログアウト", destroy_user_session_path, method: :delete
-    - else
-      = link_to "新規登録", new_user_registration_path, class: "post"
-      = link_to "ログイン", new_user_session_path, class: "post"
+
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      a.navbar-brand href="/"  TOP
+      button.navbar-toggler aria-controls="navbarNav" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNav" data-toggle="collapse" type="button"
+        span.navbar-toggler-icon
+      #navbarNav.collapse.navbar-collapse
+        ul.navbar-nav
+          - if user_signed_in?
+            li.nav-link
+              = link_to "マイページ", user_path(current_user.id)
+            li.nav-link
+              = link_to "ログアウト", destroy_user_session_path, method: :delete
+          - else
+            li.nav-link
+              = link_to "新規登録", new_user_registration_path, class: "post"
+            li.nav-link
+              = link_to "ログイン", new_user_session_path, class: "post"
+
+
+
 
     .container
       - flash.each do |key,value|
         - key = "info" if key == "notice"
         - key = "danger" if key == "alert"
-        = content_tag :div, value, class: "alert alert-#{key}"  
+        = content_tag :div, value, class: "alert alert-#{key}"
     = yield

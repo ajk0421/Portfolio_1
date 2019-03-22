@@ -1,0 +1,9 @@
+h1 = @name
+
+- if @gozyu_on_artists.present?
+  - @gozyu_on_artists.each do |artist|
+    = link_to artist do
+      = image_tag artist.image_url(:thumb)
+      p = artist.name
+- else
+  p 登録アーティストはありません

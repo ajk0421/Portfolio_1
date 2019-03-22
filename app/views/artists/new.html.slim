@@ -6,39 +6,43 @@ h1 アーティスト登録
 - @artist.errors.full_messages.each do |er|
   p = er
 
+  h3 アーティスト登録ページ
+
+
 = form_with model: @artist,local: true, url: confirm_new_artist_path do |f|
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control', id: 'artist_name'
+  .container
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control', id: 'artist_name'
 
-  .form-group
-    = f.label :furi_gana
-    = f.text_field :furi_gana, class: 'form-control', id: 'artist_furi_gana'
+    .form-group
+      = f.label :furi_gana
+      = f.text_field :furi_gana, class: 'form-control', id: 'artist_furi_gana'
 
 
-  .form-group
-    = f.label :image
-    = f.file_field :image, class: 'form-control', id: 'artist_image'
-    = f.hidden_field :image_cache 
+    .form-group
+      = f.label :image
+      = f.file_field :image, class: 'form-control', id: 'artist_image'
+      = f.hidden_field :image_cache
 
-  .form-group
-    = f.label :place
-    = f.text_field :place, class: 'form-control', id: 'artist_place'
+    .form-group
+      = f.label :place
+      = f.text_field :place, class: 'form-control', id: 'artist_place'
 
-  .form-group
-    = f.label :profile
-    = f.text_area :profile, class: 'form-control', id: 'artist_profile'
+    .form-group
+      = f.label :profile
+      = f.text_area :profile, class: 'form-control', id: 'artist_profile'
 
-  .form-group
-    = f.label :hp
-    = f.text_field :hp, class: 'form-control', id: 'artist_hp'
+    .form-group
+      = f.label :hp
+      = f.text_field :hp, class: 'form-control', id: 'artist_hp'
 
-  .form-group
-    = f.label :twitter
-    = f.text_field :twitter, class: 'form-control', id: 'artist_twitter'
+    .form-group
+      = f.label :twitter
+      = f.text_field :twitter, class: 'form-control', id: 'artist_twitter'
 
-  .form-group
-    = f.label :youtube
-    = f.text_field :youtube, class: 'form-control', id: 'artist_youtube'
+    .form-group
+      = f.label :youtube
+      = f.text_field :youtube, class: 'form-control', id: 'artist_youtube'
 
-  = f.submit '確認', class: 'btn btn-primary'
+    = f.submit '確認', class: 'btn btn-primary'

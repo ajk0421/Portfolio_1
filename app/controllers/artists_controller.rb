@@ -1,11 +1,17 @@
 class ArtistsController < ApplicationController
   before_action :login_required, except: [:index, :show]
 
-  FURI_GANA = [/^[ア-オ]+/,/^[カ-コ]+/,/^[サ-ソ]+/,/^[ン]+/]
+  FURI_GANA = [/^[ア-オ]+/,/^[カ-コ]+/,/^[サ-ソ]+/,/^[タ-ト]+/,/^[ナ-ノ]+/,/^[ハ-ホ]+/,
+              /^[マ-モ]+/,/^[ヤ-ヨ]+/,/^[ラ-ロ]+/,/^[ワ-ヲ]+/,/^[ン]+/]
 
   def index
     @artists = Artist.all
-    @gozyu_on_artists = Artist.gozyu_on(FURI_GANA[0])
+  end
+
+  def gozyu_on
+    @name = params[:name]
+    id = params[:id].to_i
+    @gozyu_on_artists = Artist.gozyu_on(FURI_GANA[id])
   end
 
   def new
