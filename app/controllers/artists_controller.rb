@@ -1,8 +1,8 @@
 class ArtistsController < ApplicationController
-  before_action :login_required, except: [:index, :show]
+  before_action :login_required, except: [:index, :show, :gozyu_on]
 
   FURI_GANA = [/^[ア-オ]+/,/^[カ-コ]+/,/^[サ-ソ]+/,/^[タ-ト]+/,/^[ナ-ノ]+/,/^[ハ-ホ]+/,
-              /^[マ-モ]+/,/^[ヤ-ヨ]+/,/^[ラ-ロ]+/,/^[ワ-ヲ]+/,/^[ン]+/]
+              /^[マ-モ]+/,/^[ヤ-ヨ]+/,/^[ラ-ロ]+/,/^[ワ-ン]+/]
 
   def index
     @artists = Artist.all

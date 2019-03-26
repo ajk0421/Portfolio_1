@@ -1,16 +1,44 @@
-h1 = @artist.name
+.container
+  .main
+    nav.nav
+      .nav-link.active
+        p = link_to "戻る", :back
+      - if user_signed_in? && current_user.id == @artist.user.id
+        .nav-link
+          p = link_to "編集する", edit_artist_path(@artist.id)
+        .nav-link
+          p = link_to "削除する", @artist, method: :delete, data:{confirm: "#{@artist.name}を削除してよろしですか？"}
 
-= image_tag @artist.image_url(:thumb)
 
-p = @artist.place
-p = @artist.profile
-p = @artist.hp
-p = @artist.twitter
-p = @artist.youtube
-
-- if user_signed_in? && current_user.id == @artist.user.id
-  p = link_to "編集する", edit_artist_path(@artist.id)
-  p = link_to "削除する", @artist, method: :delete, data:{confirm: "#{@artist.name}を削除してよろしですか？"}
-  p = link_to "戻る", user_path(current_user.id)
-- else
-  p = link_to "戻る", artists_path
+    .card.text-center
+      .card-header
+        h1 = @artist.name
+        p = @artist.furi_gana
+      .card-body
+        .card-text
+        = image_tag @artist.image_url(:thumb)
+      .card-header
+        | 活動地域
+      .card-body
+        h4.card-text
+          = @artist.place
+      .card-header
+        | プロフィール
+      .card-body
+        p.card-text
+          = @artist.profile
+      .card-header
+        | HP
+      .card-body
+        p.card-text
+          = @artist.hp
+      .card-header
+        | Twitter
+      .card-body
+        p.card-text
+          = @artist.twitter
+      .card-header
+        | Youtube
+      .card-body
+        p.card-text
+          = @artist.youtube
