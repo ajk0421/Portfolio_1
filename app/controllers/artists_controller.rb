@@ -1,8 +1,8 @@
 class ArtistsController < ApplicationController
-  before_action :login_required, except: [:index, :show]
+  before_action :login_required, except: [:index, :show, :gozyu_on]
 
   FURI_GANA = [/^[ア-オ]+/,/^[カ-コ]+/,/^[サ-ソ]+/,/^[タ-ト]+/,/^[ナ-ノ]+/,/^[ハ-ホ]+/,
-              /^[マ-モ]+/,/^[ヤ-ヨ]+/,/^[ラ-ロ]+/,/^[ワ-ヲ]+/,/^[ン]+/]
+              /^[マ-モ]+/,/^[ヤ-ヨ]+/,/^[ラ-ロ]+/,/^[ワ-ン]+/]
 
   def index
     @artists = Artist.all
@@ -33,7 +33,7 @@ class ArtistsController < ApplicationController
     end
 
     if @artist.save
-      redirect_to root_path, notice: "登録完了"
+      redirect_to user_path(current_user.id), notice: "登録完了"
     else
       render :new
     end
@@ -51,7 +51,7 @@ class ArtistsController < ApplicationController
     @artist =  Artist.find(params[:id])
 
     if @artist.update(artist_params)
-      redirect_to root_path, notice: "更新完了"
+      redirect_to artist_path, notice: "更新完了"
     else
       render :edit
     end

@@ -1,40 +1,43 @@
-h1 登録内容の確認
+.container
+  .main
 
-= form_with model: @artist, local: true do |f|
-  table.table.table-hover
-    tbody
-      tr
-       th= Artist.human_attribute_name(:image)
-       td= image_tag @artist.image_url(:thumb)
-       = hidden_field_tag :"cache[image]", @artist.image.cache_name
-      tr
-       th= Artist.human_attribute_name(:name)
-       td= @artist.name
-       = f.hidden_field :name
-      tr
-       th= Artist.human_attribute_name(:furi_gana)
-       td= @artist.furi_gana
-       = f.hidden_field :furi_gana
-      tr
-       th= Artist.human_attribute_name(:place)
-       td= @artist.place
-       = f.hidden_field :place
-      tr
-      th= Artist.human_attribute_name(:profile)
-      td= simple_format(@artist.profile)
-      = f.hidden_field :profile
-      tr
-      th= Artist.human_attribute_name(:hp)
-      td= @artist.hp
-      = f.hidden_field :hp
-      tr
-      th= Artist.human_attribute_name(:twitter)
-      td= @artist.twitter
-      = f.hidden_field :twitter
-      tr
-      th= Artist.human_attribute_name(:youtube)
-      td= @artist.youtube
-      = f.hidden_field :youtube
-  = f.hidden_field :image_cache
-  = f.submit '戻る', name: 'back'
-  = f.submit '登録'
+    h1 登録内容の確認
+
+    = form_with model: @artist, local: true do |f|
+      table.table
+        tbody
+          tr
+           th= Artist.human_attribute_name(:image)
+           td= image_tag @artist.image_url(:thumb)
+           = hidden_field_tag :"cache[image]", @artist.image.cache_name
+          tr
+           th= Artist.human_attribute_name(:name)
+           td= @artist.name
+           = f.hidden_field :name
+          tr
+           th= Artist.human_attribute_name(:furi_gana)
+           td= @artist.furi_gana
+           = f.hidden_field :furi_gana
+          tr
+           th= Artist.human_attribute_name(:place)
+           td= @artist.place
+           = f.hidden_field :place
+          tr
+          th= Artist.human_attribute_name(:profile)
+          td= simple_format(@artist.profile)
+          = f.hidden_field :profile
+          tr
+          th= Artist.human_attribute_name(:hp)
+          td= @artist.hp
+          = f.hidden_field :hp
+          tr
+          th= Artist.human_attribute_name(:twitter)
+          td= @artist.twitter
+          = f.hidden_field :twitter
+          tr
+          th= Artist.human_attribute_name(:youtube)
+          td= @artist.youtube
+          = f.hidden_field :youtube
+      = f.hidden_field :image_cache
+      = f.submit '戻る', name: 'back'
+      = f.submit '登録'

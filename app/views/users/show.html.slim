@@ -1,9 +1,19 @@
-h1 マイページ
-h2 = current_user.id
-h2 = current_user.name
+.container
+  .main
+    h2
+      = current_user.name
+      |さんのページ
 
-= link_to 'アーティスト登録', new_artist_path
+    h3.text-center style="padding:50px 0px;"
+      = link_to '新規アーティスト登録', new_artist_path
 
-h2 登録アーティスト
-- @artists.each do |artist|
-  p = link_to artist.name, artist_path(artist.id)
+    p = link_to "アーティスト一覧へ", artists_path
+
+
+
+    .list-group
+      h2.list-group-item
+        | 登録済みアーティスト
+      - @artists.each do |artist|
+        li.list-group-item
+          = link_to artist.name, artist_path(artist.id)

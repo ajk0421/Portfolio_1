@@ -1,24 +1,41 @@
-h1 アーティスト一覧
-
-.container
-  p = link_to 'ア行', controller: 'artists', action: 'gozyu_on', id: 0, name: "ア行"
-  p = link_to 'カ行', controller: 'artists', action: 'gozyu_on', id: 1, name: "カ行"
-  p = link_to 'サ行', controller: 'artists', action: 'gozyu_on', id: 2, name: "サ行"
-  p = link_to 'タ行', controller: 'artists', action: 'gozyu_on', id: 3, name: "タ行"
-  p = link_to 'ナ行', controller: 'artists', action: 'gozyu_on', id: 4, name: "ナ行"
-  p = link_to 'ハ行', controller: 'artists', action: 'gozyu_on', id: 5, name: "ハ行"
-  p = link_to 'マ行', controller: 'artists', action: 'gozyu_on', id: 6, name: "マ行"
-  p = link_to 'ヤ行', controller: 'artists', action: 'gozyu_on', id: 7, name: "ヤ行"
-  p = link_to 'ラ行', controller: 'artists', action: 'gozyu_on', id: 8, name: "ラ行"
-  p = link_to 'ワ行', controller: 'artists', action: 'gozyu_on', id: 9, name: "ワ行"
-  p = link_to 'ン行', controller: 'artists', action: 'gozyu_on', id: 10, name: "ン行"
-
-
 
 
 .container
-  .col-md-4
-    - @artists.each do |artist|
-      = link_to artist do
-        = image_tag artist.image_url(:thumb)
-        p = artist.name
+  .main
+    h1 アーティスト一覧
+
+
+    .nav-item.dropdown style="padding:50px;"
+      a#navbarDropdown.nav-link.dropdown-toggle[href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+        |  五十音検索
+      .dropdown-menu[aria-labelledby="navbarDropdown"]
+        .dropdown-item
+          = link_to 'ア行', controller: 'artists', action: 'gozyu_on', id: 0, name: "ア行"
+        .dropdown-item
+          = link_to 'カ行', controller: 'artists', action: 'gozyu_on', id: 1, name: "カ行"
+        .dropdown-item
+          = link_to 'サ行', controller: 'artists', action: 'gozyu_on', id: 2, name: "サ行"
+        .dropdown-item
+          = link_to 'タ行', controller: 'artists', action: 'gozyu_on', id: 3, name: "タ行"
+        .dropdown-item
+          = link_to 'ナ行', controller: 'artists', action: 'gozyu_on', id: 4, name: "ナ行"
+        .dropdown-item
+          = link_to 'ハ行', controller: 'artists', action: 'gozyu_on', id: 5, name: "ハ行"
+        .dropdown-item
+          = link_to 'マ行', controller: 'artists', action: 'gozyu_on', id: 6, name: "マ行"
+        .dropdown-item
+          = link_to 'ヤ行', controller: 'artists', action: 'gozyu_on', id: 7, name: "ヤ行"
+        .dropdown-item
+          = link_to 'ラ行', controller: 'artists', action: 'gozyu_on', id: 8, name: "ラ行"
+        .dropdown-item
+          = link_to 'ワ行', controller: 'artists', action: 'gozyu_on', id: 9, name: "ワ行"
+
+
+
+
+    .row
+      - @artists.each do |artist|
+        .col-sm.text-center
+          = link_to artist do
+            = image_tag artist.image_url(:thumb)
+            p = artist.name
