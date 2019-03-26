@@ -33,7 +33,7 @@ class ArtistsController < ApplicationController
     end
 
     if @artist.save
-      redirect_to root_path, notice: "登録完了"
+      redirect_to user_path(current_user.id), notice: "登録完了"
     else
       render :new
     end
@@ -51,7 +51,7 @@ class ArtistsController < ApplicationController
     @artist =  Artist.find(params[:id])
 
     if @artist.update(artist_params)
-      redirect_to root_path, notice: "更新完了"
+      redirect_to artist_path, notice: "更新完了"
     else
       render :edit
     end
