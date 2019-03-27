@@ -1,8 +1,13 @@
 .container
   .main
     h2
-      = current_user.name
-      |さんのページ
+      - if current_user.name
+        = current_user.name
+        | さんのページ
+      -else
+        | ユーザー : (No.
+        = current_user.id
+        | )さんのページ
 
     h3.text-center style="padding:50px 0px;"
       = link_to '新規アーティスト登録', new_artist_path

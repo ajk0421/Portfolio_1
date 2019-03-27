@@ -20,6 +20,12 @@ ja:
               blank: を入力して下さい。
             profile:
               blank: を入力して下さい。
+        user:
+          attributes:
+            email:
+              blank: を入力して下さい
+            password:
+              blank: を入力して下さい
 
     models:
       artist: アーティスト
