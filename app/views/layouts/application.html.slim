@@ -23,7 +23,7 @@ html
               = link_to "ログアウト", destroy_user_session_path, method: :delete
           - else
             li.nav-link
-              = link_to "新規登録", new_user_registration_path, class: "post"
+              = link_to "ユーザー登録", new_user_registration_path, class: "post"
             li.nav-link
               = link_to "ログイン", new_user_session_path, class: "post"
 
