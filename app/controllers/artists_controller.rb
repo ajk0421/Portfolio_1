@@ -4,14 +4,18 @@ class ArtistsController < ApplicationController
   FURI_GANA = [/^[ア-オ]+/,/^[カ-コ]+/,/^[サ-ソ]+/,/^[タ-ト]+/,/^[ナ-ノ]+/,/^[ハ-ホ]+/,
               /^[マ-モ]+/,/^[ヤ-ヨ]+/,/^[ラ-ロ]+/,/^[ワ-ン]+/]
 
+  PER = 20
+
   def index
-    @artists = Artist.all
+    @artists = Artist.all.order(created_at: :desc).page(params[:page]).per(PER)
   end
 
   def gozyu_on
     @name = params[:name]
     id = params[:id].to_i
-    @gozyu_on_artists = Artist.gozyu_on(FURI_GANA[id])
+    gozyu_on_artists = Artist.gozyu_on(FURI_GANA[id])
+
+    @gozyu_on_artists = Kaminari.paginate_array(gozyu_on_artists).page(params[:page]).per(PER)
   end
 
   def new
