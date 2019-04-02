@@ -20,6 +20,7 @@ gem 'html2slim'
 gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'kaminari', '~> 0.17.0'
 
 
 group :development, :test do
