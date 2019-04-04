@@ -9,6 +9,8 @@ Bundler.require(*Rails.groups)
 module Portfolio1
   class Application < Rails::Application
     config.load_defaults 5.2
+    config.assets.paths << config.root.join("vendor/assets/javascripts")
+    config.assets.paths << config.root.join("vendor/assets/stylesheets")
 
     config.generators do |g|
       g.template_engine false
