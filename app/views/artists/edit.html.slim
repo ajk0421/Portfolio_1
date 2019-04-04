@@ -1,5 +1,5 @@
 .container
- .main
+  .main
 
     h1 アーティスト編集
 
@@ -20,7 +20,7 @@
 
       .form-group
         = f.label :image
-        = f.file_field :image, id: 'artist_image'
+        = f.file_field :image, class: 'form-control, id: 'artist_image'
 
       .form-group
         = f.label :place
