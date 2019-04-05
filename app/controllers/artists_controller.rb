@@ -25,11 +25,14 @@ class ArtistsController < ApplicationController
   def confirm_new
     @artist = current_user.artists.new(artist_params)
     render :new unless @artist.valid?
+
+
   end
 
   def create
     @artist = current_user.artists.new(artist_params)
     @artist.image.retrieve_from_cache! params[:cache][:image]
+
 
     if params[:back].present?
       render :new
@@ -51,8 +54,20 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
   end
 
+  def confirm_edit
+    @artist = current_user.artists.find(params[:id])
+    @artist.assign_attributes(artist_params)
+
+    render :edit unless @artist.valid?
+  end
+
   def update
-    @artist =  Artist.find(params[:id])
+    @artist =  current_user.artists.find(params[:id])
+
+    if params[:back].present?
+      render :edit
+      return
+    end
 
     if @artist.update(artist_params)
       redirect_to artist_path, notice: "更新完了"
