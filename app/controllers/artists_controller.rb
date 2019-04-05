@@ -63,6 +63,7 @@ class ArtistsController < ApplicationController
 
   def update
     @artist =  current_user.artists.find(params[:id])
+    @artist.image.retrieve_from_cache! params[:cache][:image] if params[:cache][:image].present?
 
     if params[:back].present?
       render :edit
