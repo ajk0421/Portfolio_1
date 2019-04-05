@@ -7,7 +7,9 @@
       = link_to 'マイページへ', user_path(current_user.id), class: 'nav-link'
 
     - @artist.errors.full_messages.each do |er|
-      p = er
+      p style="color :red;"
+        |*
+        = er
 
     = form_with model: @artist,local: true, url: confirm_edit_artist_path, method: :post do |f|
       .form-group
@@ -19,9 +21,11 @@
         = f.text_field :furi_gana, class: 'form-control', id: 'artist_furi_gana'
 
       .form-group
+        p = image_tag @artist.image_url(:thumb) if @artist.image
         = f.label :image
         = f.file_field :image, class: 'form-control', id: 'artist_image'
         = f.hidden_field :image_cache
+
 
       .form-group
         = f.label :place
