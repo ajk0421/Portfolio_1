@@ -16,5 +16,5 @@
 - 簡単なテストコードをRspecで書く
 
 ### Requirement
-Rails version             5.2.2
-Ruby version              2.5.1-p57 (x86_64-darwin18)
+* Rails version             5.2.2
+* Ruby version              2.5.1-p57 (x86_64-darwin18)
