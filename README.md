@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+独学半年の期間をを経て作りました、最初のポートフォリオです。よろしくお願いいたします！
 
-Things you may want to cover:
+# Artist's Moment
+自身の音楽活動をWEBを通して紹介出来るサービスです
 
-* Ruby version
+## 制作時、意識したこと
+- 基本的なCRUD処理が出来る
+- CRUD以外のrouteを追加
+- モデルへのバリデーションを意識
+- モデルにロジックが書ける
+- コールバックのタイミングを意識する
+- 有名なGEMを使いことが出来る
+- 簡単なテストコードをRspecで書く
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Requirement
+Rails version             5.2.2
+Ruby version              2.5.1-p57 (x86_64-darwin18)
