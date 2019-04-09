@@ -14,7 +14,6 @@ class Artist < ApplicationRecord
   belongs_to :user
 
   def self.gozyu_on(furi_gana)
-
     artists = Artist.order("furi_gana ASC")
 
     gozyu_on_artists = artists.select{|a| a.furi_gana =~ furi_gana}
