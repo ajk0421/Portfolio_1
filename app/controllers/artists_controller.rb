@@ -1,5 +1,6 @@
 class ArtistsController < ApplicationController
   before_action :login_required, except: [:index, :show, :gozyu_on]
+  before_action :set_artist, only: [:show, :edit, :destroy]
 
   FURI_GANA = [/^[ア-オ]+/,/^[カ-コ]+/,/^[サ-ソ]+/,/^[タ-ト]+/,/^[ナ-ノ]+/,/^[ハ-ホ]+/,
               /^[マ-モ]+/,/^[ヤ-ヨ]+/,/^[ラ-ロ]+/,/^[ワ-ン]+/]
@@ -25,14 +26,11 @@ class ArtistsController < ApplicationController
   def confirm_new
     @artist = current_user.artists.new(artist_params)
     render :new unless @artist.valid?
-
-
   end
 
   def create
     @artist = current_user.artists.new(artist_params)
     @artist.image.retrieve_from_cache! params[:cache][:image]
-
 
     if params[:back].present?
       render :new
@@ -47,11 +45,9 @@ class ArtistsController < ApplicationController
   end
 
   def show
-    @artist = Artist.find(params[:id])
   end
 
   def edit
-    @artist = Artist.find(params[:id])
   end
 
   def confirm_edit
@@ -78,8 +74,7 @@ class ArtistsController < ApplicationController
   end
 
   def destroy
-    artist = Artist.find(params[:id])
-    artist.destroy
+    @artist.destroy
     redirect_to user_path(current_user.id), notice: "削除しました"
   end
 
@@ -87,5 +82,9 @@ class ArtistsController < ApplicationController
 
   def artist_params
     params.require(:artist).permit(:name, :furi_gana, :image, :image_cache, :place, :profile, :hp, :twitter, :youtube)
+  end
+
+  def set_artist
+    @artist = Artist.find(params[:id])
   end
 end

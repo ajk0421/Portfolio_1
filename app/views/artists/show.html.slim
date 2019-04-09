@@ -2,12 +2,19 @@
   .main
     nav.nav
       .nav-link.active
-        p = link_to "戻る", :back
+
       - if user_signed_in? && current_user.id == @artist.user.id
+        .nav-link
+          p = link_to "アーティスト一覧へ", artists_path
+        .nav-link
+          p = link_to "マイページへ", user_path(current_user.id)
         .nav-link
           p = link_to "編集する", edit_artist_path(@artist.id)
         .nav-link
           p = link_to "削除する", @artist, method: :delete, data:{confirm: "#{@artist.name}を削除してよろしですか？"}
+      - else
+        .nav-link
+          p = link_to "戻る", :back
 
 
     .card.text-center
@@ -31,14 +38,23 @@
         | HP
       .card-body
         p.card-text
-          = @artist.hp
+          - unless @artist.hp == "未登録"
+            = (link_to "#{@artist.hp}", "#{@artist.hp}")
+          - else
+            = @artist.hp
       .card-header
         | Twitter
       .card-body
         p.card-text
-          = @artist.twitter
+          - unless @artist.twitter == "未登録"
+            = (link_to "#{@artist.twitter}", "#{@artist.twitter}")
+          - else
+            = @artist.twitter
       .card-header
         | Youtube
       .card-body
         p.card-text
-          = @artist.youtube
+          - unless @artist.youtube == "未登録"
+            = (link_to "#{@artist.youtube}", "#{@artist.youtube}")
+          - else
+            = @artist.youtube
