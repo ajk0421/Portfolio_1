@@ -21,7 +21,7 @@
         = f.text_field :furi_gana, class: 'form-control', id: 'artist_furi_gana'
 
       .form-group
-        p = image_tag @artist.image_url if @artist.image
+        p = image_tag @artist.image_url(:thumb) if @artist.image
         = f.label :image
         = f.file_field :image, class: 'form-control', id: 'artist_image'
         
