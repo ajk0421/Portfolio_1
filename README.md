@@ -4,7 +4,10 @@
 
 
 ## Artist's Moment
-自身の音楽活動をWEBを通して紹介出来るサービスです
+自身の音楽活動をWEBを通して紹介出来るサービスです。
+
+
+[ポートフォリオ制作記](https://ajk-blog.com/programming/portfolio_1)
 
 ### 制作時、意識したこと
 - 基本的なCRUD処理が出来る
