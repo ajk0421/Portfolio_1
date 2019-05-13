@@ -65,4 +65,13 @@ RSpec.describe Artist, type: :model do
     end
   end
 
+  context "hpが正しいURLで入力されている" do
+    it "アーティストが作成される" do
+      artist.hp = Faker::Internet.url
+
+      expect(artist).to be_valid
+    end
+  end
+
+
 end
