@@ -73,5 +73,14 @@ RSpec.describe Artist, type: :model do
     end
   end
 
+  context "hpの値が正しく正しく入力されていない" do
+    it "エラーになる" do
+      artist.hp = Faker::String.random
+      artist.valid?
+
+      expect(artist.errors.messages[:hp]).to include("のアドレスが無効な値です")
+    end
+  end
+
 
 end
