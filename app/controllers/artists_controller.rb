@@ -25,12 +25,19 @@ class ArtistsController < ApplicationController
 
   def confirm_new
     @artist = current_user.artists.new(artist_params)
+
+    if !@artist.image.present?
+      @artist.image.retrieve_from_cache! @artist.image_cache
+    end
+
+    @artist.image_cache = @artist.image.cache_name
+
     render :new unless @artist.valid?
   end
 
   def create
     @artist = current_user.artists.new(artist_params)
-    @artist.image.retrieve_from_cache! params[:cache][:image]
+    @artist.image.retrieve_from_cache! @artist.image_cache
 
     if params[:back].present?
       render :new
