@@ -10,6 +10,7 @@ class Artist < ApplicationRecord
   validates :image, presence: true
   validates :place, presence: true
   validates :profile, presence: true
+  validates :hp, format: /\A#{URI::regexp(%w(http https))}\z/, allow_blank: true
 
   belongs_to :user
 
