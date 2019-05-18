@@ -1,5 +1,5 @@
 class Artist < ApplicationRecord
-  before_save :set_data
+  # before_save :set_data
   mount_uploader :image, ImageUploader
 
   attr_accessor :image_cache
@@ -22,11 +22,11 @@ class Artist < ApplicationRecord
 
   private
 
-  def set_data
-    self.hp= "未登録" if hp.blank?
-    self.twitter = "未登録" if twitter.blank?
-    self.youtube = "未登録" if youtube.blank?
-  end
+  # def set_data
+  #   self.hp= "未登録" if hp.blank?
+  #   self.twitter = "未登録" if twitter.blank?
+  #   self.youtube = "未登録" if youtube.blank?
+  # end
 
   def katanaka_valid
     errors.add(:furi_gana, 'は全角カタカナで入力して下さい') unless furi_gana =~ /([ァ-ン]|ー)+/
