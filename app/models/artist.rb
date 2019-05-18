@@ -5,12 +5,14 @@ class Artist < ApplicationRecord
   attr_accessor :image_cache
 
   validates :name, presence: true
+
   validates :furi_gana, presence: true
   validate :katanaka_valid
+
   validates :image, presence: true
   validates :place, presence: true
   validates :profile, presence: true
-  validates :hp, format: /\A#{URI::regexp(%w(http https))}\z/, allow_blank: true
+  validate :hp_valid
 
   belongs_to :user
 
@@ -31,4 +33,11 @@ class Artist < ApplicationRecord
   def katanaka_valid
     errors.add(:furi_gana, 'は全角カタカナで入力して下さい') unless furi_gana =~ /([ァ-ン]|ー)+/
   end
+
+  def hp_valid
+    return if hp.blank?
+    errors.add(:hp, "のアドレスが無効な値です") unless hp =~ /\A#{URI::regexp(%w(http https))}\z/
+  end
+
+
 end

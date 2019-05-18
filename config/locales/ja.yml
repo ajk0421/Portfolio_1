@@ -20,8 +20,6 @@ ja:
               blank: を入力して下さい。
             profile:
               blank: を入力して下さい。
-            hp:
-              invalid: のアドレスが無効な値です
         user:
           attributes:
             email:
