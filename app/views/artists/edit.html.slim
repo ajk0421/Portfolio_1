@@ -24,7 +24,7 @@
         p = image_tag @artist.image_url if @artist.image
         = f.label :image
         = f.file_field :image, class: 'form-control', id: 'artist_image'
-        
+
       .form-group
         = f.label :place
         = f.text_field :place, class: 'form-control', id: 'artist_place'
@@ -39,6 +39,8 @@
 
       .form-group
         = f.label :twitter
+        p
+          |(https://twitter.com/ユーザー名)
         = f.text_field :twitter, class: 'form-control', id: 'artist_twitter'
 
       .form-group
