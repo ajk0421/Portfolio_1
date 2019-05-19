@@ -43,7 +43,7 @@ class Artist < ApplicationRecord
   def twitter_valid
     return if twitter.blank?
 
-    if twitter !~ /https:\/\/twitter.com\/\w+/ || twitter.size > 35
+    if twitter !~ /^https:\/\/twitter.com\/\w+$/ || twitter.size > 35
       errors.add(:twitter, "が無効な値です")
     end
   end
