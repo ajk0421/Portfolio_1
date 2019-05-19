@@ -82,5 +82,42 @@ RSpec.describe Artist, type: :model do
     end
   end
 
+  context "twitterの値が正しく入力されている" do
+    it "アーティストが作成される" do
+      artist.twitter = "https://twitter.com/_#{Faker::Internet.password(1,14)}"
+
+      expect(artist).to be_valid
+    end
+  end
+
+  context "twitterの値が正しく入力されていない" do
+    context "文字数が長すぎる" do
+      it "エラーする" do
+        artist.twitter = "https://twitter.com/_#{Faker::Internet.password(15,30)}"
+        artist.valid?
+
+        expect(artist.errors.messages[:twitter]).to include("が無効な値です")
+      end
+    end
+
+    context "ユーザー名に不正な値が入力さえれている" do
+      it "エラーする" do
+        artist.twitter = "https://twitter.com/-.()+-=[]{}/"
+        artist.valid?
+
+        expect(artist.errors.messages[:twitter]).to include("が無効な値です")
+      end
+    end
+
+    context "TWitterのアドレスになっていない" do
+      it "エラーする" do
+        artist.twitter = Faker::Internet.password(15)
+        artist.valid?
+
+        expect(artist.errors.messages[:twitter]).to include("が無効な値です")
+
+      end
+    end
+  end
 
 end
