@@ -13,6 +13,7 @@ class Artist < ApplicationRecord
   validates :place, presence: true
   validates :profile, presence: true
   validate :hp_valid
+  validate :twitter_valid
 
   belongs_to :user
 
@@ -37,6 +38,14 @@ class Artist < ApplicationRecord
   def hp_valid
     return if hp.blank?
     errors.add(:hp, "のアドレスが無効な値です") unless hp =~ /\A#{URI::regexp(%w(http https))}\z/
+  end
+
+  def twitter_valid
+    return if twitter.blank?
+
+    if twitter !~ /https:\/\/twitter.com\/\w+/ || twitter.size > 35
+      errors.add(:twitter, "が無効な値です")
+    end
   end
 
 
