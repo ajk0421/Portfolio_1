@@ -14,6 +14,7 @@ class Artist < ApplicationRecord
   validates :profile, presence: true
   validate :hp_valid
   validate :twitter_valid
+  validate :youtube_valid
 
   belongs_to :user
 
@@ -46,6 +47,12 @@ class Artist < ApplicationRecord
     if twitter !~ /^https:\/\/twitter.com\/\w+$/ || twitter.size > 35
       errors.add(:twitter, "が無効な値です")
     end
+  end
+
+  def youtube_valid
+    return if youtube.blank?
+
+    errors.add(:youtube, "以外のアドレスは登録できません") unless youtube.start_with?("https://www.youtube.com")
   end
 
 
