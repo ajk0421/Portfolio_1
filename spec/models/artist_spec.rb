@@ -120,4 +120,21 @@ RSpec.describe Artist, type: :model do
     end
   end
 
+  context "youtubeの値が正しく入力されている" do
+    it "アーティストが作成される" do
+      artist.youtube = "https://www.youtube.com/#{Faker::Internet.url}"
+
+      expect(artist).to be_valid
+    end
+  end
+
+  context "youtubeアドレス以外の値が入力されている" do
+    it "エラーする" do
+      artist.youtube = Faker::Internet.url
+      artist.valid?
+
+      expect(artist.errors.messages[:youtube]).to include("以外のアドレスは登録できません")
+    end
+  end
+
 end
