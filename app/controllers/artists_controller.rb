@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   before_action :login_required, except: [:index, :show, :gozyu_on]
-  before_action :set_artist, only: [:show, :edit, :destroy]
+  before_action :set_current_user_artist, only: [:edit, :confirm_edit, :update, :destroy]
 
   FURI_GANA = [/^[ア-オ]+/,/^[カ-コ]+/,/^[サ-ソ]+/,/^[タ-ト]+/,/^[ナ-ノ]+/,/^[ハ-ホ]+/,
               /^[マ-モ]+/,/^[ヤ-ヨ]+/,/^[ラ-ロ]+/,/^[ワ-ン]+/]
@@ -52,15 +52,14 @@ class ArtistsController < ApplicationController
   end
 
   def show
+    @artist = Artist.find(params[:id])
   end
 
   def edit
   end
 
   def confirm_edit
-    @artist = current_user.artists.find(params[:id])
     @artist.assign_attributes(artist_params)
-
     @artist.image.retrieve_from_cache! @artist.image_cache if @artist.image_cache.present?
 
     @artist.image_cache = @artist.image.cache_name
@@ -69,7 +68,6 @@ class ArtistsController < ApplicationController
   end
 
   def update
-    @artist =  current_user.artists.find(params[:id])
     @artist.assign_attributes(artist_params)
     @artist.image.retrieve_from_cache! @artist.image_cache if @artist.image_cache.present?
 
@@ -96,7 +94,7 @@ class ArtistsController < ApplicationController
     params.require(:artist).permit(:name, :furi_gana, :image, :image_cache, :place, :profile, :hp, :twitter, :youtube)
   end
 
-  def set_artist
-    @artist = Artist.find(params[:id])
+  def set_current_user_artist
+    @artist = current_user.artists.find(params[:id])
   end
 end
