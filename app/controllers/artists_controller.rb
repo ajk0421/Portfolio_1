@@ -61,12 +61,17 @@ class ArtistsController < ApplicationController
     @artist = current_user.artists.find(params[:id])
     @artist.assign_attributes(artist_params)
 
+    @artist.image.retrieve_from_cache! @artist.image_cache if @artist.image_cache.present?
+
+    @artist.image_cache = @artist.image.cache_name
+
     render :edit unless @artist.valid?
   end
 
   def update
     @artist =  current_user.artists.find(params[:id])
-    @artist.image.retrieve_from_cache! params[:cache][:image] if params[:cache][:image].present?
+    @artist.assign_attributes(artist_params)
+    @artist.image.retrieve_from_cache! @artist.image_cache if @artist.image_cache.present?
 
     if params[:back].present?
       render :edit
